@@ -5,24 +5,165 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Nav Bars */
+/* ----------------------------- Nav Bars ----------------------------- */
 
-/* Nav Bar 1 */
-/* Nav Bar 2 */
-/* Nav Bar 3 */
+.container { max-width: 1200px; margin: 0 auto; display:flex; align-items:center; justify-content:space-between; padding: 6px 20px; }
+.navbar-1 { border-bottom: 1px solid rgba(0,0,0,0.06); }
+.navbar-1 .nav-left, .navbar-1 .nav-right { display:flex; gap:12px; list-style:none; align-items:center; }
+.navbar-1 .nav-left li, .navbar-1 .nav-right li { list-style:none; }
+.navbar-1 .nav-item, .navbar-1 .nav-icon { color:#333; text-decoration:none; padding:6px 0; display:inline-block; position:relative; font-size: 12px; }
+.navbar-1 .nav-icon i { font-size:12px; }
 
-/* Hero */
+/* nav-text border animation using layered linear-gradients for top, bottom, left, right.
+   The four gradients are ordered: top, bottom, left, right. We control
+   background-position to set animation direction (top: left->right, bottom: right->left, left: bottom->top, right: top->bottom).
+*/
+.nav-text {
+    position: relative;
+    padding: 6px 8px;
+    --border-color: red;
+    background-image:
+        linear-gradient(var(--border-color), var(--border-color)),
+        linear-gradient(var(--border-color), var(--border-color)),
+        linear-gradient(var(--border-color), var(--border-color)),
+        linear-gradient(var(--border-color), var(--border-color));
+    background-repeat: no-repeat;
+    /* positions: top grows left->right, bottom grows right->left, left grows bottom->top, right grows top->bottom */
+    background-position: left top, right bottom, left bottom, right top;
+    /* start hidden: top/bottom width 0; left/right height 0 */
+    background-size: 0% 2px, 0% 2px, 2px 0%, 2px 0%;
+    transition: background-size 500ms cubic-bezier(.2,.9,.2,1), background-position 500ms cubic-bezier(.2,.9,.2,1);
+}
 
-/* Shop Now */
+/* Make anchors the hover/focus target so hover works on the whole clickable area */
+.nav-item { display: inline-block; }
 
-/* Trending */
+/* navbar-2: animate all sides (top: left->right, bottom: right->left, left: bottom->top, right: top->bottom) */
+.navbar-2 { background: #fff; border-bottom: 1px solid #eee; }
+/* .navbar-2 .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; gap: 16px; } */
+.navbar-2 .nav-item:hover .nav-text,
+.navbar-2 .nav-item:focus .nav-text {
+    background-size: 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+}
 
-/* Testimonial */
+/* navbar-1: only left and right vertical borders */
+.navbar-1 .nav-text { background-size: 0% 2px, 0% 2px, 2px 0%, 2px 0%; }
+.navbar-1 .nav-item:hover .nav-text,
+.navbar-1 .nav-item:focus .nav-text {
+    background-size: 0% 2px, 0% 2px, 2px 100%, 2px 100%;
+}
 
-/* Like */
+/* navbar-3: black background and white borders */
+.navbar-3-container { justify-content: center !important; }
+.navbar-3 { background: black; color: #fff; }
+.navbar-3 .promo-text { color: #fff; font-weight:400; }
+.navbar-3 .shop-now { color:#de9494; padding:8px 12px; text-decoration:none; border-radius:4px; text-decoration: underline; }
+.navbar-3 .nav-text { color: #fff; --border-color: #fff; }
+.nav-left img {
+    width: 50px;
+    height: 50px;
+}
+.nav-center {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+.nav-center li a,
+.nav-center .pages-toggle {
+    color: #333;
+    text-decoration: none;
+    padding: 6px 8px;
+    font-size: 15px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.nav-right {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.icon { color: #333; text-decoration: none; font-size: 18px; }
 
-/* News */
+.icon.cart { position: relative; display: inline-flex; align-items: center; }
+.cart-badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: #e53935;
+    color: #fff;
+    font-size: 11px;
+    padding: 3px 6px;
+    border-radius: 999px;
+    line-height: 1;
+    min-width: 18px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
 
-/* Advantages */
+.pages { position: relative; }
+.pages-container {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 8px);
+    display: flex;
+    gap: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 2px solid #eee;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    background: transparent;
+    opacity: 0;
+    transform: scaleY(0.6);
+    transform-origin: top center;
+    visibility: hidden;
+    transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms ease;
+    z-index: 50;
+}
+.pages .dropdown {
+    background: #fff;
+    list-style: none;
+    padding: 8px 0;
+    min-width: 160px;
+}
+.pages .dropdown li a {
+    display: block;
+    padding: 8px 12px;
+    color: #333;
+    white-space: nowrap;
+}
 
-/* Footer */
+.pages:hover .pages-container,
+.pages:focus-within .pages-container,
+.pages.open .pages-container {
+    opacity: 1;
+    transform: scaleY(1);
+    visibility: visible;
+}
+
+.navbar-3-container { justify-content: center !important; }
+.navbar-3 { background: black; color: #fff; }
+.navbar-3 .promo-text { color: #fff; font-weight:400; }
+.navbar-3 .shop-now { color:#de9494; padding:8px 12px; text-decoration:none; border-radius:4px; text-decoration: underline; }
+.navbar-3 .nav-text { color: #fff; }
+
+@media (max-width: 800px) {
+    .nav-center { display: none; }
+}
+
+/* ----------------------------- Hero ----------------------------- */
+
+/* ----------------------------- Shop Now ----------------------------- */
+
+/* ----------------------------- Trending ----------------------------- */
+
+/* ----------------------------- Testimonial ----------------------------- */
+
+/* ----------------------------- Like ----------------------------- */
+
+/* ----------------------------- News ----------------------------- */
+
+/* ----------------------------- Advantages ----------------------------- */
+
+/* ----------------------------- Footer ----------------------------- */

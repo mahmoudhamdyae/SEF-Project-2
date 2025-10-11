@@ -10,28 +10,132 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>Hello World</h1>
 
-        <!-- Nav Bars -->
+        <!-- ----------------------------- Nav Bars -----------------------------  -->
 
-        <!-- Nav Bar 1 -->
-        <!-- Nav Bar 2 -->
-        <!-- Nav Bar 3 -->
+        <!-- ----------------------------- Nav Bar 1 ----------------------------- -->
+        <nav class="navbar-1">
+            <div class="container">
+                <ul class="nav-left">
+                    <li><a class="nav-item" href="#"><span class="nav-text">About Us</span></a></li>
+                    <li><a class="nav-item" href="#"><span class="nav-text">Privacy</span></a></li>
+                    <li><a class="nav-item" href="#"><span class="nav-text">FAQ</span></a></li>
+                    <li><a class="nav-item" href="#"><span class="nav-text">Careers</span></a></li>
+                </ul>
+                <ul class="nav-right">
+                    <li><a class="nav-item" href="#"><span class="nav-text">My Wishlist</span></a></li>
+                    <li><a class="nav-item" href="#"><span class="nav-text">Track Your Order</span></a></li>
+                    <li><a class="nav-icon" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a class="nav-icon" href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a class="nav-icon" href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a class="nav-icon" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a class="nav-icon" href="#"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </nav>
 
-        <!-- Hero -->
+        <!-- ----------------------------- Nav Bar 2 ----------------------------- -->
+        <nav class="navbar-2">
+            <div class="container">
+                <div class="nav-left">
+                    <img src="images/logo.jpeg" alt="logo">
+                </div>
 
-        <!-- Shop Now -->
+                <ul class="nav-center">
+                    <li><a class="nav-item" href="#"><span class="nav-text">Home</span></a></li>
+                    <li><a class="nav-item" href="#"><span class="nav-text">Men</span></a></li>
+                    <li><a class="nav-item" href="#"><span class="nav-text">Women</span></a></li>
+                    <li><a class="nav-item" href="#"><span class="nav-text">Baby</span></a></li>
+                    <li><a class="nav-item" href="#"><span class="nav-text">Collection</span></a></li>
+                    <li class="pages">
+                        <button class="pages-toggle nav-item" aria-expanded="false"><span class="nav-text">Pages</span> <span class="caret">▾</span></button>
+                        <div class="pages-container">
+                            <ul class="dropdown">
+                                <li><a class="nav-item" href="#"><span class="nav-text">Shop1</span></a></li>
+                                <li><a class="nav-item" href="#"><span class="nav-text">Single Product</span></a></li>
+                                <li><a class="nav-item" href="#"><span class="nav-text">About</span></a></li>
+                                <li><a class="nav-item" href="#"><span class="nav-text">Contact</span></a></li>
+                            </ul>
+                            <ul class="dropdown">
+                                <li><a class="nav-item" href="#"><span class="nav-text">Shop2</span></a></li>
+                                <li><a class="nav-item" href="#"><span class="nav-text">Single Product</span></a></li>
+                                <li><a class="nav-item" href="#"><span class="nav-text">About</span></a></li>
+                                <li><a class="nav-item" href="#"><span class="nav-text">Contact</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="nav-item" href="#"><span class="nav-text">Contact</span></a></li>
+                </ul>
 
-        <!-- Trending -->
+                <div class="nav-right">
+                    <a href="#" class="icon"><i class="fas fa-search"></i></a>
+                    <a href="#" class="icon"><i class="fas fa-user"></i></a>
+                    <a href="#" class="icon cart" aria-label="Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge">2</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <!-- ----------------------------- Nav Bar 3 ----------------------------- -->
+        <nav class="navbar-3">
+            <div class="container navbar-3-container">
+                <div class="promo">
+                    <span class="promo-text">Sale Up To 50% Biggest Discounts. Hurry! Limited Period Offer</span>
+                </div>
+                <div class="promo-cta">
+                    <a href="#" class="shop-now">Shop Now</a>
+                </div>
+            </div>
+        </nav>
 
-        <!-- Testimonial -->
+        <!-- ----------------------------- Hero ----------------------------- -->
 
-        <!-- Like -->
+        <!-- ----------------------------- Shop Now ----------------------------- -->
 
-        <!-- News -->
+        <!-- ----------------------------- Trending ----------------------------- -->
 
-        <!-- Advantages -->
+        <!-- ----------------------------- Testimonial ----------------------------- -->
 
-        <!-- Footer -->
+        <!-- ----------------------------- Like ----------------------------- -->
+
+        <!-- ----------------------------- News ----------------------------- -->
+
+        <!-- ----------------------------- Advantages ----------------------------- -->
+
+        <!-- ----------------------------- Footer ----------------------------- -->
+        <script>
+            // Pages dropdown toggle with animation and accessibility
+            (function(){
+                const pages = document.querySelector('.pages');
+                if (!pages) return;
+                const toggle = pages.querySelector('.pages-toggle');
+                const container = pages.querySelector('.pages-container');
+
+                function open() {
+                    pages.classList.add('open');
+                    toggle.setAttribute('aria-expanded', 'true');
+                }
+                function close() {
+                    pages.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+
+                toggle.addEventListener('click', function(e){
+                    const isOpen = pages.classList.contains('open');
+                    if (isOpen) close(); else open();
+                });
+
+                // close on outside click
+                document.addEventListener('click', function(e){
+                    if (!pages.contains(e.target)) close();
+                });
+
+                // close on Escape
+                document.addEventListener('keydown', function(e){
+                    if (e.key === 'Escape') close();
+                });
+            })();
+        </script>
     </body>
 </html>
