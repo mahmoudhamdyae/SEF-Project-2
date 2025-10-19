@@ -64,6 +64,7 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
 .navbar-1 .nav-item, .navbar-1 .nav-icon { color:var(--muted); text-decoration:none; padding:6px 0; display:inline-block; position:relative; font-size: 12px; transition: color .18s ease, transform .18s ease; }
 .navbar-1 .nav-icon i { font-size:12px; }
 .navbar-1 .nav-item:hover { color: var(--accent); transform: translateY(-2px); }
+.navbar-1 i:hover { color: var(--accent); }
 
 /* nav-text border animation using layered linear-gradients for top, bottom, left, right.
    The four gradients are ordered: top, bottom, left, right. We control
@@ -94,9 +95,10 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
     background-size: 100% 2px, 100% 2px, 2px 100%, 2px 100%;
 }
 
-.navbar-1 .nav-text { background-size: 0% 2px, 0% 2px, 2px 0%, 2px 0%; }
+.navbar-1 .nav-text, .navbar-1 i { background-size: 0% 2px, 0% 2px, 2px 0%, 2px 0%; }
 .navbar-1 .nav-item:hover .nav-text,
-.navbar-1 .nav-item:focus .nav-text {
+.navbar-1 .nav-item:focus .nav-text,
+.navbar-1 .nav-item:hover i {
     background-size: 0% 2px, 0% 2px, 2px 100%, 2px 100%;
 }
 
@@ -182,6 +184,38 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
     white-space: nowrap;
 }
 
+.navbar-1 .nav-icon {
+  position: relative;
+  padding: 0 4px;
+  --border-color: var(--accent);
+  background-image:
+      linear-gradient(transparent, transparent),
+      linear-gradient(transparent, transparent),
+      linear-gradient(var(--border-color), var(--border-color)),
+      linear-gradient(var(--border-color), var(--border-color));
+  background-repeat: no-repeat;
+  background-position: 
+  left top, 
+  right bottom,
+   left bottom,
+    right top
+    ;
+  background-size: 0% 2px, 0% 2px, 2px 0%, 2px 0%;
+  transition: background-size 7s cubic-bezier(.2,.9,.2,1),
+              background-position 7s cubic-bezier(.2,.9,.2,1),
+              transform 2s ease, color 2s ease
+              color 0.3s ease;
+  border-radius: 6px;
+  transform-origin: center;
+  backface-visibility: hidden;
+}
+
+/* Hover animation (draws the border) */
+.navbar-1 .nav-icon:hover {
+  background-size: 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  transform: scaleX(-1);
+  color: var(--accent);
+}
 /* .pages:hover .pages-container,
 .pages:focus-within .pages-container,
 .pages.open .pages-container {
@@ -199,7 +233,7 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
 
 /* link underline micro-interaction */
 .nav-center li a, a { position: relative; }
-.nav-center li a::after { content: ""; position: absolute; left: 0; right: 0; height: 3px; bottom: -6px; background: linear-gradient(90deg,var(--accent),#ff8a76); border-radius: 3px; transform-origin: left center; transform: scaleX(0); opacity: 0; transition: transform .28s cubic-bezier(.2,.9,.25,1), opacity .18s ease; }
+/* .nav-center li a::after { content: ""; position: absolute; left: 0; right: 0; height: 3px; bottom: -6px; background: linear-gradient(90deg,var(--accent),#ff8a76); border-radius: 3px; transform-origin: left center; transform: scaleX(0); opacity: 0; transition: transform .28s cubic-bezier(.2,.9,.25,1), opacity .18s ease; } */
 .nav-center li a:hover::after, a:hover::after { transform: scaleX(1); opacity: 1; }
 
 @media (max-width: 800px) {
@@ -217,6 +251,17 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
 .btn.primary { border: none; background: linear-gradient(90deg, var(--accent), #ff8a76); color: #fff; font-weight: 700; box-shadow: 0 12px 30px rgba(255,107,107,0.12); transition: transform .18s ease, box-shadow .18s ease; }
 .btn.primary:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 46px rgba(255,107,107,0.16); }
 .hero-image img { width: 100%;  height: 100%; }
+.hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.2)
+  );
+  z-index: 1;
+}
 
 @media (max-width: 900px) {
     .hero-title { font-size: 32px; }
@@ -287,18 +332,17 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
 
 .trend-area{
     margin-top: 70px;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    position: relative;
 }
 
 .trend-area .trending{
+    width: 100%;
     min-height: 50px;
     border-bottom: 1px solid #16161a70;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: ce;
 }
 .trend-area .trending h2{
     font-size: 35px;
@@ -312,8 +356,8 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
     font-size: 20px;
 }
 .trend-area .trending .link-select{
-    /* color: #f00; */
-    /* border-bottom: 5px solid #f00; */
+    color: #f00;
+    border-bottom: 5px solid #f00;
 }
 .trend-area .product-trend{
     display: flex;
@@ -321,7 +365,7 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
 }
 .trend-area .product-trend div{
     width: 24%;
-    height: 500px;
+    height: 600px;
     margin-top: 50px;
     text-align: center;
     position: relative;
@@ -330,9 +374,6 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
 .trend-area .product-trend div img{
     width: 100%;
     height: 75%;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 8px;
 }
 .trend-area .product-trend div a{
     padding: 10px 0;
@@ -383,13 +424,13 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
 .trend-area .product-trend div:hover .icon a{
     opacity: 1;
     visibility: visible;
-    /* transform: translateY(0); */
+    transform: translateY(0);
 }
 .trend-area .product-trend div .icon a:hover{
     background: #f00;
     color: #fff;
-}
 
+}
 .trend-area .product-trend > div::after{
     content: "";
     width: 100%;
@@ -398,14 +439,15 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
     top: 0;
     left: 0;
     z-index: 1;
-    background: url(../images/trend1-hover.jpg);
+    background: url(https://i.pinimg.com/736x/df/f9/2e/dff92e3583f1603efa5f88f455adcc04.jpg);
     background-size: cover;
+    background-position: center;
     backface-visibility: hidden;
     transform: rotateY(180deg);
     transition: 1s;
     transform-style: preserve-3d;
-
 }
+
 .trend-area .product-trend > div:hover::after{
     transform: rotateY(0deg);
 }
@@ -702,8 +744,8 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
     color: #BBB9B5;
 }
 .footer-site .div3 p span,.footer-site .div3 p a{
-    /* color: #f00; */
-    /* padding: 0 2px; */
+    color: #f00;
+    padding: 0 2px;
 }
 .footer-site .div3 p a:hover{
     text-decoration: underline;
