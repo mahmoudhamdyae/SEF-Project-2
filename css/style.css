@@ -90,14 +90,12 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
 .nav-item { display: inline-block; }
 
 .navbar-2 { background: var(--surface); border-bottom: 1px solid rgba(15,23,36,0.04); }
-.navbar-2 .nav-item:hover .nav-text,
-.navbar-2 .nav-item:focus .nav-text {
+.navbar-2 .nav-item:hover .nav-text{
     background-size: 100% 2px, 100% 2px, 2px 100%, 2px 100%;
 }
 
 .navbar-1 .nav-text, .navbar-1 i { background-size: 0% 2px, 0% 2px, 2px 0%, 2px 0%; }
 .navbar-1 .nav-item:hover .nav-text,
-.navbar-1 .nav-item:focus .nav-text,
 .navbar-1 .nav-item:hover i {
     background-size: 0% 2px, 0% 2px, 2px 100%, 2px 100%;
 }
@@ -216,13 +214,13 @@ body{ background: linear-gradient(180deg, var(--bg), #fff 60%); color: var(--pri
   transform: scaleX(-1);
   color: var(--accent);
 }
-/* .pages:hover .pages-container,
+.pages:hover .pages-container,
 .pages:focus-within .pages-container,
 .pages.open .pages-container {
     opacity: 1;
     transform: scaleY(1);
     visibility: visible;
-} */
+}
 
 .navbar-3-container { justify-content: center !important; gap: 10px; }
 .navbar-3 { background: black; color: #fff; }
